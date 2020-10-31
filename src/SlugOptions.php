@@ -23,7 +23,7 @@ class SlugOptions
 
     public $slugLanguage = 'en';
 
-    public array $translatableLocales = [];
+    public $translatableLocales = [];
 
     public static function create(): self
     {
