@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 
 trait HasSlug
 {
-    protected SlugOptions $slugOptions;
+    protected $slugOptions;
 
     abstract public function getSlugOptions(): SlugOptions;
 
@@ -105,7 +105,9 @@ trait HasSlug
         }
 
         $slugSourceString = collect($this->slugOptions->generateSlugFrom)
-            ->map(fn (string $fieldName): string => data_get($this, $fieldName, ''))
+            ->map(function(string $fieldName): string {
+                data_get($this, $fieldName, '');
+            })
             ->implode($this->slugOptions->slugSeparator);
 
         return $this->generateSubstring($slugSourceString);
