@@ -21,8 +21,8 @@ trait HasTranslatableSlug
 
         // collects all locales for all translatable fields
         return Collection::wrap($generateSlugFrom)
-            ->filter(fn ($fieldName) => $this->isTranslatableAttribute($fieldName))
-            ->flatMap(fn ($fieldName) => $this->getTranslatedLocales($fieldName));
+            ->filter(function($fieldName) { return $this->isTranslatableAttribute($fieldName); })
+            ->flatMap(function ($fieldName) { return $this->getTranslatedLocales($fieldName); });
     }
 
     protected function addSlug()
